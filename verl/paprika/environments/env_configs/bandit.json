@@ -1,0 +1,17 @@
+{
+    "agent": "{agent}",
+    "env": "{env}",
+    "environment_default_response": "Sorry, your response does not follow the required format, please try again. You should format your answer as: <Think> Step-by-step thinking to strategically make your next choice about which button to press, that will maximimze your reward </Think> \n<Answer> your next choice </Answer>",
+    "judge_prompt_agent": null,
+    "judge_prompt_env": null,
+    "env_optional_message": "",
+    "judge_prompt_suffix": "",
+    "agent_optional_message": "",
+    "max_turns": 100,
+    "eval": [
+        {
+            "agent": "You are in a room with 5 buttons labeled blue, green, red, yellow, purple. Each button is associated with a Bernoulli distribution with a fixed but unknown mean; the means for the buttons could be different. For each button, when you press it, you will get a reward that is sampled from the button's associated distribution. You have 100 time steps and, on each time step, you can choose any button and receive the reward. Your goal is to maximize the total reward over the 100 time steps. At each time step, I will tell you the reward from the previous round. Then you must make the next choice, which must be exactly one of blue, green, red, yellow, and purple. You must provide your final answer as <Answer> your guess what the button should be </Answer>, where the button should be one of blue, green, red, yellow or purple. This is the first timestep. Which button will you choose next? You should format your answer as: <Think> Step-by-step thinking to strategically make your next choice about which button to press, that will maximimze your reward </Think> \n<Answer> your next choice </Answer>",
+            "env": "blue, green, red, yellow, purple"
+        }
+    ]
+}

@@ -1,0 +1,87 @@
+{
+  "version": "1.0",
+  "truncation": null,
+  "padding": null,
+  "added_tokens": [
+    {
+      "id": 0,
+      "content": "<pad>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 1,
+      "content": "<bos>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 2,
+      "content": "<eos>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 3,
+      "content": "<unk>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    }
+  ],
+  "normalizer": null,
+  "pre_tokenizer": {
+    "type": "Whitespace"
+  },
+  "post_processor": null,
+  "decoder": null,
+  "model": {
+    "type": "WordLevel",
+    "vocab": {
+      "<pad>": 0,
+      "<bos>": 1,
+      "<eos>": 2,
+      "<unk>": 3,
+      "GRID_START": 4,
+      "GRID_END": 5,
+      "PATH_START": 6,
+      "DONE": 7,
+      "PATH": 8,
+      "WALL": 9,
+      "GOAL": 10,
+      "START": 11,
+      "NEWLINE": 12,
+      "UP": 13,
+      "DOWN": 14,
+      "LEFT": 15,
+      "RIGHT": 16,
+      "\n": 17,
+      "RESERVED_0": 18,
+      "RESERVED_1": 19,
+      "RESERVED_2": 20,
+      "RESERVED_3": 21,
+      "RESERVED_4": 22,
+      "RESERVED_5": 23,
+      "RESERVED_6": 24,
+      "RESERVED_7": 25,
+      "RESERVED_8": 26,
+      "RESERVED_9": 27,
+      "RESERVED_10": 28,
+      "RESERVED_11": 29,
+      "RESERVED_12": 30,
+      "RESERVED_13": 31
+    },
+    "unk_token": "<unk>"
+  }
+}

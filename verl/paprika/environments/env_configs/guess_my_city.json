@@ -1,0 +1,3121 @@
+{
+    "env": "You are the environment in a game called 'Guess My City.' You will be given a specific home city (e.g., London, United Kingdom) and you have to respond to the player's questions to help them guess this city.\n\n Follow these rules:\n\n1. Answer the agent player's questions honestly and correctly (i.e., the answers need to be true given the home city given to you at the start of the game), but do not mention the name of your city or its country explicitly. However, you can verify the player's guess about a particular city/country. For example, if the player asks, 'What is your home country?' You should not respond to this question. However, if they ask 'Is your home country United Kingdom?' You should reply with the correct answer based on the home city given to you.\n\n2. Your answers should provide useful clues about your city's geography, culture, landmarks, cuisine, climate, or other unique characteristics.\n\n3. Be as informative as possible to guide the agent player within the rules. Example answers: If the agent asks about cuisine, you could say: 'My city is famous for its seafood dishes and has a vibrant food market scene.' If the agent asks about geography, you might say: 'My city is located near a major river and has a historic port.'\n\n4. You should respond with 'Goal reached' if the player has successfully guessed your home city. Ignore minor variations in the spelling of the city, but only if these variations are common.\n\nRemember, you are here to help the agent guess your city through clues, but you must not reveal the city's name or its country directly UNDER ANY CIRCUMSTANCES. If the player asks such a question, reply that you cannot give away the name, and can only confirm the name if the player guesses it. \n\nThe game starts now, and the player is trying to guess the city {env}",
+    "agent": "You are playing a game called 'Guess My City.' Your task is to guess the home city of the other player within 20 questions.\n\nYou must follow these rules:\n\n1. You may ask open-ended questions about the city's characteristics, such as geography, culture, landmarks, cuisine, climate, or other unique traits. You can also ask just yes or no questions if you are comfortable with that, but you are not rquired to. \n\n2. Do not ask directly for the name of the city or country. Instead of directly asking the name of the city, you can try to guess it and ask questions about the guess. For example, asking 'What is the name of your city?' is not allowed, but you can ask the question 'Is your city Dhaka?' or 'Is your city located in Bangladesh?' \n\n3. Use the answers from the other player to strategically decide the next question, your goal is to arrive at the correct city with as few questions as possible. \n\n4. After gathering enough information, you can attempt to guess the city, but each guess counts as one of your 20 questions.\n\nExample questions: 'What is your favorite cuisine from your home city?', 'Is your home city located near the coastline?', 'What kind of landmarks is your city known for?' Your goal is to identify the city through deduction, pattern recognition, and strategic questioning.\n\n4. When you are confident, make a guess, by mentioning the name of the city and the country it is in, for example, 'Is the city Jakarta, Indonesia?'\n\nThe game starts now, and start asking your questions.",
+    "environment_default_response": "Sorry, I cannot answer this question. You should only ask questions that does not directly ask me the name of the city or the country the city is in. Please ask a different question.",
+    "judge_prompt_agent": "You are the judge in a game called 'Guess My City'. Your role is to verify if the player has won the game by correctly guessing the city chosen by the environment (env) player.\n\nTo determine this, follow these rules:\n\n1. Check the agent player's question to ensure they have not directly asked the environment for the name of the city or country. Any question explicitly requesting the city's name, such as 'What is the name of your city?' or 'What country is your city in?' violates the rules.\n\n2. Verify that the player has explicitly mentioned the correct name of the city in their guess. Ignore minor variations in the spelling of the city (for example, Kiev and Kyiv refer to the same city). If these two conditions are met, the player wins the game. Otherwise, the agent has not won.\n\n3.Your role is purely evaluative, ensuring adherence to the rules and confirming or denying the win based on the criteria above.\n\n4. Reply <VALID> if the player has successfully guessed the city, and followed the specified rules. Otherwise, reply <NOTVALID>",
+    "judge_prompt_env": null,
+    "env_optional_message": "(Remember the player is trying to guess a {agent}, and the correct answer is {env}. Reply to the question in relation to {env}. Please try to be concise and keep it short. If the player asks you to reveal the name of city or country directly instead of guessing the name, reply that you cannot give away the name, and can only confirm the name if the player guesses it.)",
+    "agent_optional_message": null,
+    "judge_prompt_suffix": "\n\nNow judge whether the player has successfully guessed the correct {agent}, which is {env} in this particular game. Reply with <VALID> only if the player has guessed {env} (or other variations in name, if both names refer to the same city) in their response, otherwise reply with <NOTVALID>. Ignore variations in the name of the city if the city is known by both names (for example, Kyiv and Kiev). Note that guessing a particular characteristics of this city is not enough, the player needs to successfully guess the correct city by name in their response in order for you to reply with <VALID>.\n\nAnswer: ",
+    "max_turns": 20,
+    "train": [
+        {
+            "env": "Camagüey, Cuba",
+            "agent": "city"
+        },
+        {
+            "env": "San Juan, Puerto Rico",
+            "agent": "city"
+        },
+        {
+            "env": "Calgary, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Addu City, Maldives",
+            "agent": "city"
+        },
+        {
+            "env": "Qurghonteppa (Bokhtar), Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Barisal, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Akdepe, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Escuintla, Guatemala",
+            "agent": "city"
+        },
+        {
+            "env": "Naryn, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Philadelphia, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Kulob, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Piura, Peru",
+            "agent": "city"
+        },
+        {
+            "env": "Odessa, Ukraine",
+            "agent": "city"
+        },
+        {
+            "env": "Cholpon-Ata, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Cusco, Peru",
+            "agent": "city"
+        },
+        {
+            "env": "Tirupati, India",
+            "agent": "city"
+        },
+        {
+            "env": "Jaipur, India",
+            "agent": "city"
+        },
+        {
+            "env": "Urumqi, China",
+            "agent": "city"
+        },
+        {
+            "env": "Allahabad (Prayagraj), India",
+            "agent": "city"
+        },
+        {
+            "env": "Datong, China",
+            "agent": "city"
+        },
+        {
+            "env": "Las Vegas, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Managua, Nicaragua",
+            "agent": "city"
+        },
+        {
+            "env": "Linz, Austria",
+            "agent": "city"
+        },
+        {
+            "env": "Magtymguly, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Quebec City, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Zhenjiang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Shaoxing, China",
+            "agent": "city"
+        },
+        {
+            "env": "Fuzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Las Piedras, Uruguay",
+            "agent": "city"
+        },
+        {
+            "env": "Cuenca, Ecuador",
+            "agent": "city"
+        },
+        {
+            "env": "Edmonton, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Galle, Sri Lanka",
+            "agent": "city"
+        },
+        {
+            "env": "Montevideo, Uruguay",
+            "agent": "city"
+        },
+        {
+            "env": "Guiyang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Negombo, Sri Lanka",
+            "agent": "city"
+        },
+        {
+            "env": "Kabul, Afghanistan",
+            "agent": "city"
+        },
+        {
+            "env": "Nanning, China",
+            "agent": "city"
+        },
+        {
+            "env": "Manado, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Bengkulu, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "São Luís, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Zarafshan, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Medellín, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Talca, Chile",
+            "agent": "city"
+        },
+        {
+            "env": "Cayenne, French Guiana",
+            "agent": "city"
+        },
+        {
+            "env": "Manta, Ecuador",
+            "agent": "city"
+        },
+        {
+            "env": "Petaling Jaya, Malaysia",
+            "agent": "city"
+        },
+        {
+            "env": "Ghent, Belgium",
+            "agent": "city"
+        },
+        {
+            "env": "Gwalior, India",
+            "agent": "city"
+        },
+        {
+            "env": "Dezhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Sulyukta, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Port-au-Prince, Haiti",
+            "agent": "city"
+        },
+        {
+            "env": "Lelydorp, Suriname",
+            "agent": "city"
+        },
+        {
+            "env": "Guatemala City, Guatemala",
+            "agent": "city"
+        },
+        {
+            "env": "Montreal, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Cancún, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Balykchy, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Querétaro, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Pontianak, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Zhaoqing, China",
+            "agent": "city"
+        },
+        {
+            "env": "Wuxi, China",
+            "agent": "city"
+        },
+        {
+            "env": "Guwahati, India",
+            "agent": "city"
+        },
+        {
+            "env": "Trondheim, Norway",
+            "agent": "city"
+        },
+        {
+            "env": "Qinhuangdao, China",
+            "agent": "city"
+        },
+        {
+            "env": "Gharm, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Boston, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Cap-Haïtien, Haiti",
+            "agent": "city"
+        },
+        {
+            "env": "Heraklion, Greece",
+            "agent": "city"
+        },
+        {
+            "env": "Mexico City, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Seville, Spain",
+            "agent": "city"
+        },
+        {
+            "env": "Jayapura, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Rajkot, India",
+            "agent": "city"
+        },
+        {
+            "env": "Natal, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Chengde, China",
+            "agent": "city"
+        },
+        {
+            "env": "Recife, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Porto Alegre, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Mawlamyine, Myanmar",
+            "agent": "city"
+        },
+        {
+            "env": "Memphis, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Xuzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Khorugh, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Tampere, Finland",
+            "agent": "city"
+        },
+        {
+            "env": "Tongling, China",
+            "agent": "city"
+        },
+        {
+            "env": "Thimphu, Bhutan",
+            "agent": "city"
+        },
+        {
+            "env": "Phnom Penh, Cambodia",
+            "agent": "city"
+        },
+        {
+            "env": "Gazojak, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Langfang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Patras, Greece",
+            "agent": "city"
+        },
+        {
+            "env": "Dashoguz, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Palembang, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Huaian, China",
+            "agent": "city"
+        },
+        {
+            "env": "Dharan, Nepal",
+            "agent": "city"
+        },
+        {
+            "env": "Rivera, Uruguay",
+            "agent": "city"
+        },
+        {
+            "env": "Quetzaltenango, Guatemala",
+            "agent": "city"
+        },
+        {
+            "env": "Changsha, China",
+            "agent": "city"
+        },
+        {
+            "env": "Garabogaz, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Thessaloniki, Greece",
+            "agent": "city"
+        },
+        {
+            "env": "Capiatá, Paraguay",
+            "agent": "city"
+        },
+        {
+            "env": "Nantong, China",
+            "agent": "city"
+        },
+        {
+            "env": "Pereira, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Maoming, China",
+            "agent": "city"
+        },
+        {
+            "env": "Liège, Belgium",
+            "agent": "city"
+        },
+        {
+            "env": "Nakhon Ratchasima (Korat), Thailand",
+            "agent": "city"
+        },
+        {
+            "env": "Bayramaly, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Debrecen, Hungary",
+            "agent": "city"
+        },
+        {
+            "env": "Gujranwala, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Alor Setar, Malaysia",
+            "agent": "city"
+        },
+        {
+            "env": "Mexicali, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Durán, Ecuador",
+            "agent": "city"
+        },
+        {
+            "env": "Coimbatore, India",
+            "agent": "city"
+        },
+        {
+            "env": "Asunción, Paraguay",
+            "agent": "city"
+        },
+        {
+            "env": "Weifang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Abbottabad, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Chiang Mai, Thailand",
+            "agent": "city"
+        },
+        {
+            "env": "New York, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Baotou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Bahawalpur, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Baoding, China",
+            "agent": "city"
+        },
+        {
+            "env": "Belize City, Belize",
+            "agent": "city"
+        },
+        {
+            "env": "Vijayawada, India",
+            "agent": "city"
+        },
+        {
+            "env": "Rangpur, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Alajuela, Costa Rica",
+            "agent": "city"
+        },
+        {
+            "env": "León, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Narayanganj, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Łódź, Poland",
+            "agent": "city"
+        },
+        {
+            "env": "Olomouc, Czech Republic",
+            "agent": "city"
+        },
+        {
+            "env": "Tegucigalpa, Honduras",
+            "agent": "city"
+        },
+        {
+            "env": "Ranchi, India",
+            "agent": "city"
+        },
+        {
+            "env": "Siem Reap, Cambodia",
+            "agent": "city"
+        },
+        {
+            "env": "Johor Bahru, Malaysia",
+            "agent": "city"
+        },
+        {
+            "env": "Isfana, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Jodhpur, India",
+            "agent": "city"
+        },
+        {
+            "env": "Larissa, Greece",
+            "agent": "city"
+        },
+        {
+            "env": "La Romana, Dominican Republic",
+            "agent": "city"
+        },
+        {
+            "env": "Mérida, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Osh, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Punakha, Bhutan",
+            "agent": "city"
+        },
+        {
+            "env": "Aalborg, Denmark",
+            "agent": "city"
+        },
+        {
+            "env": "Tursunzoda, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Xiangtan, China",
+            "agent": "city"
+        },
+        {
+            "env": "San Francisco, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Ekibastuz, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Rancagua, Chile",
+            "agent": "city"
+        },
+        {
+            "env": "Zaragoza, Spain",
+            "agent": "city"
+        },
+        {
+            "env": "João Pessoa, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Maceió, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Córdoba, Argentina",
+            "agent": "city"
+        },
+        {
+            "env": "Qujing, China",
+            "agent": "city"
+        },
+        {
+            "env": "Pekanbaru, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Taraz, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Changzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Brno, Czech Republic",
+            "agent": "city"
+        },
+        {
+            "env": "Kunming, China",
+            "agent": "city"
+        },
+        {
+            "env": "Dnipro, Ukraine",
+            "agent": "city"
+        },
+        {
+            "env": "Wrocław, Poland",
+            "agent": "city"
+        },
+        {
+            "env": "Freeport, Bahamas",
+            "agent": "city"
+        },
+        {
+            "env": "Luang Prabang, Laos",
+            "agent": "city"
+        },
+        {
+            "env": "Dublin, Ireland",
+            "agent": "city"
+        },
+        {
+            "env": "Shenzhen, China",
+            "agent": "city"
+        },
+        {
+            "env": "Aarhus, Denmark",
+            "agent": "city"
+        },
+        {
+            "env": "Austin, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Danghara, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Binzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Surat Thani, Thailand",
+            "agent": "city"
+        },
+        {
+            "env": "Victoria, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Shah Alam, Malaysia",
+            "agent": "city"
+        },
+        {
+            "env": "Zhuhai, China",
+            "agent": "city"
+        },
+        {
+            "env": "Kunduz, Afghanistan",
+            "agent": "city"
+        },
+        {
+            "env": "Fredrikstad, Norway",
+            "agent": "city"
+        },
+        {
+            "env": "Cuttack, India",
+            "agent": "city"
+        },
+        {
+            "env": "Colón, Panama",
+            "agent": "city"
+        },
+        {
+            "env": "Indianapolis, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Dili, Timor-Leste",
+            "agent": "city"
+        },
+        {
+            "env": "Kota Kinabalu, Malaysia",
+            "agent": "city"
+        },
+        {
+            "env": "Maturín, Venezuela",
+            "agent": "city"
+        },
+        {
+            "env": "Chiang Rai, Thailand",
+            "agent": "city"
+        },
+        {
+            "env": "Ghazni, Afghanistan",
+            "agent": "city"
+        },
+        {
+            "env": "Vadodara, India",
+            "agent": "city"
+        },
+        {
+            "env": "Gothenburg, Sweden",
+            "agent": "city"
+        },
+        {
+            "env": "Xiamen, China",
+            "agent": "city"
+        },
+        {
+            "env": "Bukhara, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Batam, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Isfara, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Phonsavan, Laos",
+            "agent": "city"
+        },
+        {
+            "env": "Huangshan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Ambon, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Seattle, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Karshi, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Hubli-Dharwad, India",
+            "agent": "city"
+        },
+        {
+            "env": "Lyon, France",
+            "agent": "city"
+        },
+        {
+            "env": "Savannakhet, Laos",
+            "agent": "city"
+        },
+        {
+            "env": "Turkmenabat, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Vung Tau, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Turkmenbashi, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Jabalpur, India",
+            "agent": "city"
+        },
+        {
+            "env": "Rosario, Argentina",
+            "agent": "city"
+        },
+        {
+            "env": "Mandalay, Myanmar",
+            "agent": "city"
+        },
+        {
+            "env": "Barquisimeto, Venezuela",
+            "agent": "city"
+        },
+        {
+            "env": "Ayutthaya, Thailand",
+            "agent": "city"
+        },
+        {
+            "env": "Indore, India",
+            "agent": "city"
+        },
+        {
+            "env": "Changde, China",
+            "agent": "city"
+        },
+        {
+            "env": "Nha Trang, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Puerto La Cruz, Venezuela",
+            "agent": "city"
+        },
+        {
+            "env": "Thakhek, Laos",
+            "agent": "city"
+        },
+        {
+            "env": "Surakarta (Solo), Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Marseille, France",
+            "agent": "city"
+        },
+        {
+            "env": "Lviv, Ukraine",
+            "agent": "city"
+        },
+        {
+            "env": "Pavlodar, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Oslo, Norway",
+            "agent": "city"
+        },
+        {
+            "env": "Kant, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Suzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Denver, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Islamabad, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Bhubaneswar, India",
+            "agent": "city"
+        },
+        {
+            "env": "Bucaramanga, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Cartagena, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Vientiane, Laos",
+            "agent": "city"
+        },
+        {
+            "env": "Chandigarh, India",
+            "agent": "city"
+        },
+        {
+            "env": "Serdar, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Kuala Lumpur, Malaysia",
+            "agent": "city"
+        },
+        {
+            "env": "Valencia, Spain",
+            "agent": "city"
+        },
+        {
+            "env": "Regina, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Paysandú, Uruguay",
+            "agent": "city"
+        },
+        {
+            "env": "Nonthaburi, Thailand",
+            "agent": "city"
+        },
+        {
+            "env": "Jiujiang, China",
+            "agent": "city"
+        },
+        {
+            "env": "La Serena, Chile",
+            "agent": "city"
+        },
+        {
+            "env": "Khujand, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Pécs, Hungary",
+            "agent": "city"
+        },
+        {
+            "env": "Santiago de los Caballeros, Dominican Republic",
+            "agent": "city"
+        },
+        {
+            "env": "Hefei, China",
+            "agent": "city"
+        },
+        {
+            "env": "Rio de Janeiro, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Choloma, Honduras",
+            "agent": "city"
+        },
+        {
+            "env": "Paro, Bhutan",
+            "agent": "city"
+        },
+        {
+            "env": "San Salvador, El Salvador",
+            "agent": "city"
+        },
+        {
+            "env": "Visakhapatnam, India",
+            "agent": "city"
+        },
+        {
+            "env": "Cologne, Germany",
+            "agent": "city"
+        },
+        {
+            "env": "Zurich, Switzerland",
+            "agent": "city"
+        },
+        {
+            "env": "Portoviejo, Ecuador",
+            "agent": "city"
+        },
+        {
+            "env": "Kourou, French Guiana",
+            "agent": "city"
+        },
+        {
+            "env": "Anqing, China",
+            "agent": "city"
+        },
+        {
+            "env": "Taizhou (Zhejiang), China",
+            "agent": "city"
+        },
+        {
+            "env": "Campinas, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Roghun, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Saltillo, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Zaozhuang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Tijuana, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Salto, Uruguay",
+            "agent": "city"
+        },
+        {
+            "env": "Pasto, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Oruro, Bolivia",
+            "agent": "city"
+        },
+        {
+            "env": "Salta, Argentina",
+            "agent": "city"
+        },
+        {
+            "env": "Margilan, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Wuhu, China",
+            "agent": "city"
+        },
+        {
+            "env": "Cobija, Bolivia",
+            "agent": "city"
+        },
+        {
+            "env": "Utrecht, Netherlands",
+            "agent": "city"
+        },
+        {
+            "env": "San Miguel, El Salvador",
+            "agent": "city"
+        },
+        {
+            "env": "Jinhua, China",
+            "agent": "city"
+        },
+        {
+            "env": "Mary, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Balikpapan, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Iquique, Chile",
+            "agent": "city"
+        },
+        {
+            "env": "Manchester, UK",
+            "agent": "city"
+        },
+        {
+            "env": "Hisor, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Jiangmen, China",
+            "agent": "city"
+        },
+        {
+            "env": "Ningbo, China",
+            "agent": "city"
+        },
+        {
+            "env": "Jizzakh, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Baucau, Timor-Leste",
+            "agent": "city"
+        },
+        {
+            "env": "Lucknow, India",
+            "agent": "city"
+        },
+        {
+            "env": "Gonaïves, Haiti",
+            "agent": "city"
+        },
+        {
+            "env": "São Paulo, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Pingxiang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Karakol, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Tasikmalaya, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Atamyrat (Kerkiçi), Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Washington, USA",
+            "agent": "city"
+        },
+        {
+            "env": "San José, Costa Rica",
+            "agent": "city"
+        },
+        {
+            "env": "Szeged, Hungary",
+            "agent": "city"
+        },
+        {
+            "env": "Xinxiang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Concepción, Chile",
+            "agent": "city"
+        },
+        {
+            "env": "Peshawar, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Munich, Germany",
+            "agent": "city"
+        },
+        {
+            "env": "Xingtai, China",
+            "agent": "city"
+        },
+        {
+            "env": "Kupang, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Sargodha, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Shijiazhuang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Columbus, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Ganzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Arequipa, Peru",
+            "agent": "city"
+        },
+        {
+            "env": "Winnipeg, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Dallas, USA",
+            "agent": "city"
+        },
+        {
+            "env": "George Town (Penang), Malaysia",
+            "agent": "city"
+        },
+        {
+            "env": "Lausanne, Switzerland",
+            "agent": "city"
+        },
+        {
+            "env": "Lanzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Taboshar, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Makassar, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "La Paz, Bolivia",
+            "agent": "city"
+        },
+        {
+            "env": "Naypyidaw, Myanmar",
+            "agent": "city"
+        },
+        {
+            "env": "Athens, Greece",
+            "agent": "city"
+        },
+        {
+            "env": "Maanshan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Ruhabat, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Chifeng, China",
+            "agent": "city"
+        },
+        {
+            "env": "Hamilton, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Miskolc, Hungary",
+            "agent": "city"
+        },
+        {
+            "env": "Valparaíso, Chile",
+            "agent": "city"
+        },
+        {
+            "env": "Battambang, Cambodia",
+            "agent": "city"
+        },
+        {
+            "env": "Porto, Portugal",
+            "agent": "city"
+        },
+        {
+            "env": "Ciudad del Este, Paraguay",
+            "agent": "city"
+        },
+        {
+            "env": "Kota, India",
+            "agent": "city"
+        },
+        {
+            "env": "Puebla, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Rach Gia, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Quy Nhon, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Vantaa, Finland",
+            "agent": "city"
+        },
+        {
+            "env": "Mataram, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Yangzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Prague, Czech Republic",
+            "agent": "city"
+        },
+        {
+            "env": "Angren, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Aveiro, Portugal",
+            "agent": "city"
+        },
+        {
+            "env": "Karamay, China",
+            "agent": "city"
+        },
+        {
+            "env": "Bandar Seri Begawan, Brunei",
+            "agent": "city"
+        },
+        {
+            "env": "Porto Velho, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Ciudad Guayana, Venezuela",
+            "agent": "city"
+        },
+        {
+            "env": "Guilin, China",
+            "agent": "city"
+        },
+        {
+            "env": "Shymkent, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Balkanabat, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Culiacán, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Edinburgh, UK",
+            "agent": "city"
+        },
+        {
+            "env": "Almaty, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Galway, Ireland",
+            "agent": "city"
+        },
+        {
+            "env": "Banda Aceh, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Colombo, Sri Lanka",
+            "agent": "city"
+        },
+        {
+            "env": "Multan, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Pingdingshan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Sucre, Bolivia",
+            "agent": "city"
+        },
+        {
+            "env": "Tarija, Bolivia",
+            "agent": "city"
+        },
+        {
+            "env": "Charleroi, Belgium",
+            "agent": "city"
+        },
+        {
+            "env": "Amritsar, India",
+            "agent": "city"
+        },
+        {
+            "env": "Birgunj, Nepal",
+            "agent": "city"
+        },
+        {
+            "env": "Barranquilla, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Weihai, China",
+            "agent": "city"
+        },
+        {
+            "env": "Taldykorgan, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Mazar-i-Sharif, Afghanistan",
+            "agent": "city"
+        },
+        {
+            "env": "Hanoi, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Santa Marta, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Huizhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Kampong Cham, Cambodia",
+            "agent": "city"
+        },
+        {
+            "env": "Bern, Switzerland",
+            "agent": "city"
+        },
+        {
+            "env": "San Jose, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Yinchuan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Stavanger, Norway",
+            "agent": "city"
+        },
+        {
+            "env": "Aguascalientes, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Banjarmasin, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Quito, Ecuador",
+            "agent": "city"
+        },
+        {
+            "env": "Bacolod, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Panjakent, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Coimbra, Portugal",
+            "agent": "city"
+        },
+        {
+            "env": "Mar del Plata, Argentina",
+            "agent": "city"
+        },
+        {
+            "env": "The Hague, Netherlands",
+            "agent": "city"
+        },
+        {
+            "env": "Muntinlupa, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Kara-Balta, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Turku, Finland",
+            "agent": "city"
+        },
+        {
+            "env": "Ha Long, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "San Luis Potosí, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Karaganda, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Aurangabad, India",
+            "agent": "city"
+        },
+        {
+            "env": "Yogyakarta, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Termez, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Handan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Potosí, Bolivia",
+            "agent": "city"
+        },
+        {
+            "env": "Zhanjiang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Detroit, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Pune, India",
+            "agent": "city"
+        },
+        {
+            "env": "Cebu City, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Zhongshan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Charlotte, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Agra, India",
+            "agent": "city"
+        },
+        {
+            "env": "Nagpur, India",
+            "agent": "city"
+        },
+        {
+            "env": "Chittagong, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Huancayo, Peru",
+            "agent": "city"
+        },
+        {
+            "env": "Torreón, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Salzburg, Austria",
+            "agent": "city"
+        },
+        {
+            "env": "San Diego, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Manaus, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Mysore, India",
+            "agent": "city"
+        },
+        {
+            "env": "Xining, China",
+            "agent": "city"
+        },
+        {
+            "env": "Anuradhapura, Sri Lanka",
+            "agent": "city"
+        },
+        {
+            "env": "Baltimore, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Ipoh, Malaysia",
+            "agent": "city"
+        },
+        {
+            "env": "Nassau, Bahamas",
+            "agent": "city"
+        },
+        {
+            "env": "Mendoza, Argentina",
+            "agent": "city"
+        },
+        {
+            "env": "Sialkot, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Arica, Chile",
+            "agent": "city"
+        },
+        {
+            "env": "Lisbon, Portugal",
+            "agent": "city"
+        },
+        {
+            "env": "Patna, India",
+            "agent": "city"
+        },
+        {
+            "env": "Tangshan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Nashville, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Fort Worth, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Heyuan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Maracaibo, Venezuela",
+            "agent": "city"
+        },
+        {
+            "env": "Denpasar, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Havana, Cuba",
+            "agent": "city"
+        },
+        {
+            "env": "Brussels, Belgium",
+            "agent": "city"
+        },
+        {
+            "env": "Milan, Italy",
+            "agent": "city"
+        },
+        {
+            "env": "Kara-Kul, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Kuala Belait, Brunei",
+            "agent": "city"
+        },
+        {
+            "env": "Talas, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Norak, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Bishkek, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Belém, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Santo Domingo, Dominican Republic",
+            "agent": "city"
+        },
+        {
+            "env": "Ho Chi Minh City, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Yuxi, China",
+            "agent": "city"
+        },
+        {
+            "env": "Kharkiv, Ukraine",
+            "agent": "city"
+        },
+        {
+            "env": "Encarnación, Paraguay",
+            "agent": "city"
+        },
+        {
+            "env": "Sihanoukville, Cambodia",
+            "agent": "city"
+        },
+        {
+            "env": "Kochi, India",
+            "agent": "city"
+        },
+        {
+            "env": "Tiruchirappalli, India",
+            "agent": "city"
+        },
+        {
+            "env": "Phoenix, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Jacksonville, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Chiclayo, Peru",
+            "agent": "city"
+        },
+        {
+            "env": "Yantai, China",
+            "agent": "city"
+        },
+        {
+            "env": "Abadan (Büzmeýin), Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Cartago, Costa Rica",
+            "agent": "city"
+        },
+        {
+            "env": "Turin, Italy",
+            "agent": "city"
+        },
+        {
+            "env": "Västerås, Sweden",
+            "agent": "city"
+        },
+        {
+            "env": "Sukkur, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Toluca, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Copenhagen, Denmark",
+            "agent": "city"
+        },
+        {
+            "env": "Bogotá, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Trinidad, Bolivia",
+            "agent": "city"
+        },
+        {
+            "env": "Hengyang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Zhezkazgan, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Guadalajara, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Shaoguan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Hue, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Ratnapura, Sri Lanka",
+            "agent": "city"
+        },
+        {
+            "env": "Gelephu, Bhutan",
+            "agent": "city"
+        },
+        {
+            "env": "Graz, Austria",
+            "agent": "city"
+        },
+        {
+            "env": "La Plata, Argentina",
+            "agent": "city"
+        },
+        {
+            "env": "Anyang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Phuntsholing, Bhutan",
+            "agent": "city"
+        },
+        {
+            "env": "Kaifeng, China",
+            "agent": "city"
+        },
+        {
+            "env": "Shantou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Thai Nguyen, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Bago, Myanmar",
+            "agent": "city"
+        },
+        {
+            "env": "Sylhet, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Dongguan, China",
+            "agent": "city"
+        },
+        {
+            "env": "San Miguel de Tucumán, Argentina",
+            "agent": "city"
+        },
+        {
+            "env": "São Gonçalo, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Ordos, China",
+            "agent": "city"
+        },
+        {
+            "env": "Toktogul, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Namangan, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Braga, Portugal",
+            "agent": "city"
+        },
+        {
+            "env": "Kyzyl-Kiya, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Bharatpur, Nepal",
+            "agent": "city"
+        },
+        {
+            "env": "San Cristóbal, Venezuela",
+            "agent": "city"
+        },
+        {
+            "env": "Kunya-Urgench, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Spanish Town, Jamaica",
+            "agent": "city"
+        },
+        {
+            "env": "Los Angeles, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Jambi, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "San Pedro Sula, Honduras",
+            "agent": "city"
+        },
+        {
+            "env": "Birmingham, UK",
+            "agent": "city"
+        },
+        {
+            "env": "Quetta, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Tangerang, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Hermosillo, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Baherden, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Jalalabad, Afghanistan",
+            "agent": "city"
+        },
+        {
+            "env": "Tejen, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Hai Phong, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Uppsala, Sweden",
+            "agent": "city"
+        },
+        {
+            "env": "Liaocheng, China",
+            "agent": "city"
+        },
+        {
+            "env": "Foshan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Zhengzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Xi'an, China",
+            "agent": "city"
+        },
+        {
+            "env": "Bergen, Norway",
+            "agent": "city"
+        },
+        {
+            "env": "Ashgabat, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Makati, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Paramaribo, Suriname",
+            "agent": "city"
+        },
+        {
+            "env": "Iquitos, Peru",
+            "agent": "city"
+        },
+        {
+            "env": "Dongying, China",
+            "agent": "city"
+        },
+        {
+            "env": "Santa Ana, El Salvador",
+            "agent": "city"
+        },
+        {
+            "env": "Davao City, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Halifax, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Panama City, Panama",
+            "agent": "city"
+        },
+        {
+            "env": "Aktobe, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Luoyang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Kokand, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Jinzhong, China",
+            "agent": "city"
+        },
+        {
+            "env": "Dushanbe, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Janakpur, Nepal",
+            "agent": "city"
+        },
+        {
+            "env": "Butwal, Nepal",
+            "agent": "city"
+        },
+        {
+            "env": "Kandahar, Afghanistan",
+            "agent": "city"
+        },
+        {
+            "env": "Malacca City, Malaysia",
+            "agent": "city"
+        },
+        {
+            "env": "Goiânia, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Kadamjay, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Konibodom, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Navoi, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Denau, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Amsterdam, Netherlands",
+            "agent": "city"
+        },
+        {
+            "env": "Pursat, Cambodia",
+            "agent": "city"
+        },
+        {
+            "env": "Biratnagar, Nepal",
+            "agent": "city"
+        },
+        {
+            "env": "Huzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Ambato, Ecuador",
+            "agent": "city"
+        },
+        {
+            "env": "Poznań, Poland",
+            "agent": "city"
+        },
+        {
+            "env": "Phuket, Thailand",
+            "agent": "city"
+        }
+    ],
+    "LMRL-Gym": [
+        {
+            "env": "Seoul, South Korea",
+            "agent": "city"
+        },
+        {
+            "env": "Sao Paulo, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Bombay, India",
+            "agent": "city"
+        },
+        {
+            "env": "Jakarta, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Karachi, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Moscow, Russia",
+            "agent": "city"
+        },
+        {
+            "env": "Istanbul, Turkey",
+            "agent": "city"
+        },
+        {
+            "env": "Shanghai, China",
+            "agent": "city"
+        },
+        {
+            "env": "Tokyo, Japan",
+            "agent": "city"
+        },
+        {
+            "env": "Bangkok, Thailand",
+            "agent": "city"
+        },
+        {
+            "env": "Beijing, China",
+            "agent": "city"
+        },
+        {
+            "env": "Delhi, India",
+            "agent": "city"
+        },
+        {
+            "env": "London, UK",
+            "agent": "city"
+        },
+        {
+            "env": "Cairo, Egypt",
+            "agent": "city"
+        },
+        {
+            "env": "Tehran, Iran",
+            "agent": "city"
+        },
+        {
+            "env": "Bogota, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Bandung, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Tianjin, China",
+            "agent": "city"
+        },
+        {
+            "env": "Lima, Peru",
+            "agent": "city"
+        },
+        {
+            "env": "Lahore, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Bogor, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Santiago, Chile",
+            "agent": "city"
+        },
+        {
+            "env": "Shenyang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Calcutta, India",
+            "agent": "city"
+        },
+        {
+            "env": "Wuhan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Sydney, Australia",
+            "agent": "city"
+        },
+        {
+            "env": "Guangzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Singapore, Singapore",
+            "agent": "city"
+        },
+        {
+            "env": "Madras, India",
+            "agent": "city"
+        },
+        {
+            "env": "Baghdad, Iraq",
+            "agent": "city"
+        },
+        {
+            "env": "Pusan, South Korea",
+            "agent": "city"
+        },
+        {
+            "env": "Yokohama, Japan",
+            "agent": "city"
+        },
+        {
+            "env": "Dhaka, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Berlin, Germany",
+            "agent": "city"
+        },
+        {
+            "env": "Alexandria, Egypt",
+            "agent": "city"
+        },
+        {
+            "env": "Bangalore, India",
+            "agent": "city"
+        },
+        {
+            "env": "Malang, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Hyderabad, India",
+            "agent": "city"
+        },
+        {
+            "env": "Chongqing, China",
+            "agent": "city"
+        },
+        {
+            "env": "Haerbin, China",
+            "agent": "city"
+        },
+        {
+            "env": "Ankara, Turkey",
+            "agent": "city"
+        },
+        {
+            "env": "Buenos Aires, Argentina",
+            "agent": "city"
+        },
+        {
+            "env": "Chengdu, China",
+            "agent": "city"
+        },
+        {
+            "env": "Ahmedabad, India",
+            "agent": "city"
+        },
+        {
+            "env": "Casablanca, Morocco",
+            "agent": "city"
+        },
+        {
+            "env": "Chicago, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Xian, China",
+            "agent": "city"
+        },
+        {
+            "env": "Madrid, Spain",
+            "agent": "city"
+        },
+        {
+            "env": "Surabaya, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Pyong Yang, North Korea",
+            "agent": "city"
+        },
+        {
+            "env": "Nanjing, China",
+            "agent": "city"
+        },
+        {
+            "env": "Kinshaha, Congo",
+            "agent": "city"
+        },
+        {
+            "env": "Rome, Italy",
+            "agent": "city"
+        },
+        {
+            "env": "Taipei, China",
+            "agent": "city"
+        },
+        {
+            "env": "Osaka, Japan",
+            "agent": "city"
+        },
+        {
+            "env": "Kiev, Ukraine",
+            "agent": "city"
+        },
+        {
+            "env": "Yangon, Myanmar",
+            "agent": "city"
+        },
+        {
+            "env": "Toronto, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Zibo, China",
+            "agent": "city"
+        },
+        {
+            "env": "Dalian, China",
+            "agent": "city"
+        },
+        {
+            "env": "Taega, South Korea",
+            "agent": "city"
+        },
+        {
+            "env": "Addis Ababa, Ethopia",
+            "agent": "city"
+        },
+        {
+            "env": "Jinan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Salvador, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Inchon, South Korea",
+            "agent": "city"
+        },
+        {
+            "env": "Semarang, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Giza, Egypt",
+            "agent": "city"
+        },
+        {
+            "env": "Changchun, China",
+            "agent": "city"
+        },
+        {
+            "env": "Havanna, Cuba",
+            "agent": "city"
+        },
+        {
+            "env": "Nagoya, Japan",
+            "agent": "city"
+        },
+        {
+            "env": "Belo Horizonte, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Paris, France",
+            "agent": "city"
+        },
+        {
+            "env": "Tashkent, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Fortaleza, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Sukabumi, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Cali, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Guayaquil, Ecuador",
+            "agent": "city"
+        },
+        {
+            "env": "Qingdao, China",
+            "agent": "city"
+        },
+        {
+            "env": "Izmir, Turkey",
+            "agent": "city"
+        },
+        {
+            "env": "Cirebon, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Taiyuan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Brasilia, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Bucuresti, Romania",
+            "agent": "city"
+        },
+        {
+            "env": "Faisalabad, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Medan, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Houston, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Mashhad, Iran",
+            "agent": "city"
+        },
+        {
+            "env": "Medellin, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Kanpur, India",
+            "agent": "city"
+        },
+        {
+            "env": "Budapest, Hungary",
+            "agent": "city"
+        },
+        {
+            "env": "Caracas, Venezuela",
+            "agent": "city"
+        }
+    ],
+    "eval": [
+        {
+            "env": "Surat, India",
+            "agent": "city"
+        },
+        {
+            "env": "Oklahoma City, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Portland, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Louisville, USA",
+            "agent": "city"
+        },
+        {
+            "env": "Bhopal, India",
+            "agent": "city"
+        },
+        {
+            "env": "Ludhiana, India",
+            "agent": "city"
+        },
+        {
+            "env": "Vancouver, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Nashik, India",
+            "agent": "city"
+        },
+        {
+            "env": "Ottawa, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Faridabad, India",
+            "agent": "city"
+        },
+        {
+            "env": "Ghaziabad, India",
+            "agent": "city"
+        },
+        {
+            "env": "Kitchener, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Saskatoon, Canada",
+            "agent": "city"
+        },
+        {
+            "env": "Thiruvananthapuram, India",
+            "agent": "city"
+        },
+        {
+            "env": "Monterrey, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Mangalore, India",
+            "agent": "city"
+        },
+        {
+            "env": "Ciudad Juárez, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Dhanbad, India",
+            "agent": "city"
+        },
+        {
+            "env": "Chihuahua, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Raipur, India",
+            "agent": "city"
+        },
+        {
+            "env": "Dehradun, India",
+            "agent": "city"
+        },
+        {
+            "env": "Guntur, India",
+            "agent": "city"
+        },
+        {
+            "env": "Warangal, India",
+            "agent": "city"
+        },
+        {
+            "env": "Udaipur, India",
+            "agent": "city"
+        },
+        {
+            "env": "Ajmer, India",
+            "agent": "city"
+        },
+        {
+            "env": "Morelia, Mexico",
+            "agent": "city"
+        },
+        {
+            "env": "Salem, India",
+            "agent": "city"
+        },
+        {
+            "env": "San Ignacio, Belize",
+            "agent": "city"
+        },
+        {
+            "env": "Ujjain, India",
+            "agent": "city"
+        },
+        {
+            "env": "Panaji, India",
+            "agent": "city"
+        },
+        {
+            "env": "Rawalpindi, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "Masaya, Nicaragua",
+            "agent": "city"
+        },
+        {
+            "env": "Gujrat, Pakistan",
+            "agent": "city"
+        },
+        {
+            "env": "David, Panama",
+            "agent": "city"
+        },
+        {
+            "env": "Khulna, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Rajshahi, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Mymensingh, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Comilla, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Gazipur, Bangladesh",
+            "agent": "city"
+        },
+        {
+            "env": "Santiago de Cuba, Cuba",
+            "agent": "city"
+        },
+        {
+            "env": "Kathmandu, Nepal",
+            "agent": "city"
+        },
+        {
+            "env": "Pokhara, Nepal",
+            "agent": "city"
+        },
+        {
+            "env": "Kingston, Jamaica",
+            "agent": "city"
+        },
+        {
+            "env": "Montego Bay, Jamaica",
+            "agent": "city"
+        },
+        {
+            "env": "Kandy, Sri Lanka",
+            "agent": "city"
+        },
+        {
+            "env": "Jaffna, Sri Lanka",
+            "agent": "city"
+        },
+        {
+            "env": "Santa Fe, Argentina",
+            "agent": "city"
+        },
+        {
+            "env": "Bahía Blanca, Argentina",
+            "agent": "city"
+        },
+        {
+            "env": "Trincomalee, Sri Lanka",
+            "agent": "city"
+        },
+        {
+            "env": "Brasília, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Herat, Afghanistan",
+            "agent": "city"
+        },
+        {
+            "env": "Curitiba, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Baghlan, Afghanistan",
+            "agent": "city"
+        },
+        {
+            "env": "Teresina, Brazil",
+            "agent": "city"
+        },
+        {
+            "env": "Male, Maldives",
+            "agent": "city"
+        },
+        {
+            "env": "Antofagasta, Chile",
+            "agent": "city"
+        },
+        {
+            "env": "Temuco, Chile",
+            "agent": "city"
+        },
+        {
+            "env": "Samarinda, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Padang, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Ibagué, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Cúcuta, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Manizales, Colombia",
+            "agent": "city"
+        },
+        {
+            "env": "Cimahi, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Depok, Indonesia",
+            "agent": "city"
+        },
+        {
+            "env": "Trujillo, Peru",
+            "agent": "city"
+        },
+        {
+            "env": "Udon Thani, Thailand",
+            "agent": "city"
+        },
+        {
+            "env": "Hat Yai, Thailand",
+            "agent": "city"
+        },
+        {
+            "env": "Pattaya, Thailand",
+            "agent": "city"
+        },
+        {
+            "env": "Juliaca, Peru",
+            "agent": "city"
+        },
+        {
+            "env": "Tacna, Peru",
+            "agent": "city"
+        },
+        {
+            "env": "Santa Cruz de la Sierra, Bolivia",
+            "agent": "city"
+        },
+        {
+            "env": "Cochabamba, Bolivia",
+            "agent": "city"
+        },
+        {
+            "env": "El Alto, Bolivia",
+            "agent": "city"
+        },
+        {
+            "env": "Kuching, Malaysia",
+            "agent": "city"
+        },
+        {
+            "env": "Machala, Ecuador",
+            "agent": "city"
+        },
+        {
+            "env": "Manila, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Quezon City, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Loja, Ecuador",
+            "agent": "city"
+        },
+        {
+            "env": "Mandaluyong, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Pasig, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Taguig, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Luque, Paraguay",
+            "agent": "city"
+        },
+        {
+            "env": "San Lorenzo, Paraguay",
+            "agent": "city"
+        },
+        {
+            "env": "Iloilo City, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Cagayan de Oro, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Zamboanga City, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Baguio, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Angeles City, Philippines",
+            "agent": "city"
+        },
+        {
+            "env": "Maracay, Venezuela",
+            "agent": "city"
+        },
+        {
+            "env": "Da Nang, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Can Tho, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Cumaná, Venezuela",
+            "agent": "city"
+        },
+        {
+            "env": "Bien Hoa, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Georgetown, Guyana",
+            "agent": "city"
+        },
+        {
+            "env": "Thanh Hoa, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Nam Dinh, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Linden, Guyana",
+            "agent": "city"
+        },
+        {
+            "env": "Buon Ma Thuot, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "New Amsterdam, Guyana",
+            "agent": "city"
+        },
+        {
+            "env": "Long Xuyen, Vietnam",
+            "agent": "city"
+        },
+        {
+            "env": "Poipet, Cambodia",
+            "agent": "city"
+        },
+        {
+            "env": "Kampong Thom, Cambodia",
+            "agent": "city"
+        },
+        {
+            "env": "Pakse, Laos",
+            "agent": "city"
+        },
+        {
+            "env": "Pathein, Myanmar",
+            "agent": "city"
+        },
+        {
+            "env": "Monywa, Myanmar",
+            "agent": "city"
+        },
+        {
+            "env": "Astana (Nur-Sultan), Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Oskemen (Ust-Kamenogorsk), Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Semey (Semipalatinsk), Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Oral (Uralsk), Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Kostanay, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Petropavl, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Kokshetau, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Turkistan, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Atyrau, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Aktau, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Temirtau, Kazakhstan",
+            "agent": "city"
+        },
+        {
+            "env": "Samarkand, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Andijan, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Fergana, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Nukus, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Khiva, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Guliston, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Chirchiq, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Shakhrisabz, Uzbekistan",
+            "agent": "city"
+        },
+        {
+            "env": "Seydi, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Kerki, Turkmenistan",
+            "agent": "city"
+        },
+        {
+            "env": "Jalal-Abad, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Tokmok, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Uzgen, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Tash-Kumyr, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Kara-Suu, Kyrgyzstan",
+            "agent": "city"
+        },
+        {
+            "env": "Istaravshan, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Vahdat, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Sarband, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Yovon, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Farkhor, Tajikistan",
+            "agent": "city"
+        },
+        {
+            "env": "Hangzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Wenzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Jiaxing, China",
+            "agent": "city"
+        },
+        {
+            "env": "Yancheng, China",
+            "agent": "city"
+        },
+        {
+            "env": "Lianyungang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Zhuzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Yueyang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Linyi, China",
+            "agent": "city"
+        },
+        {
+            "env": "Rizhao, China",
+            "agent": "city"
+        },
+        {
+            "env": "Heze, China",
+            "agent": "city"
+        },
+        {
+            "env": "Hohhot, China",
+            "agent": "city"
+        },
+        {
+            "env": "Qingyuan, China",
+            "agent": "city"
+        },
+        {
+            "env": "Liuzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Wuzhou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Zunyi, China",
+            "agent": "city"
+        },
+        {
+            "env": "Nanchang, China",
+            "agent": "city"
+        },
+        {
+            "env": "Xinyu, China",
+            "agent": "city"
+        },
+        {
+            "env": "Zhangjiakou, China",
+            "agent": "city"
+        },
+        {
+            "env": "Glasgow, UK",
+            "agent": "city"
+        },
+        {
+            "env": "Toulouse, France",
+            "agent": "city"
+        },
+        {
+            "env": "Nice, France",
+            "agent": "city"
+        },
+        {
+            "env": "Hamburg, Germany",
+            "agent": "city"
+        },
+        {
+            "env": "Frankfurt, Germany",
+            "agent": "city"
+        },
+        {
+            "env": "Barcelona, Spain",
+            "agent": "city"
+        },
+        {
+            "env": "Naples, Italy",
+            "agent": "city"
+        },
+        {
+            "env": "Palermo, Italy",
+            "agent": "city"
+        },
+        {
+            "env": "Rotterdam, Netherlands",
+            "agent": "city"
+        },
+        {
+            "env": "Eindhoven, Netherlands",
+            "agent": "city"
+        },
+        {
+            "env": "Antwerp, Belgium",
+            "agent": "city"
+        },
+        {
+            "env": "Geneva, Switzerland",
+            "agent": "city"
+        },
+        {
+            "env": "Basel, Switzerland",
+            "agent": "city"
+        },
+        {
+            "env": "Vienna, Austria",
+            "agent": "city"
+        },
+        {
+            "env": "Innsbruck, Austria",
+            "agent": "city"
+        },
+        {
+            "env": "Stockholm, Sweden",
+            "agent": "city"
+        },
+        {
+            "env": "Malmö, Sweden",
+            "agent": "city"
+        },
+        {
+            "env": "Odense, Denmark",
+            "agent": "city"
+        },
+        {
+            "env": "Esbjerg, Denmark",
+            "agent": "city"
+        },
+        {
+            "env": "Helsinki, Finland",
+            "agent": "city"
+        },
+        {
+            "env": "Espoo, Finland",
+            "agent": "city"
+        },
+        {
+            "env": "Warsaw, Poland",
+            "agent": "city"
+        },
+        {
+            "env": "Krakow, Poland",
+            "agent": "city"
+        },
+        {
+            "env": "Ostrava, Czech Republic",
+            "agent": "city"
+        },
+        {
+            "env": "Plzeň, Czech Republic",
+            "agent": "city"
+        },
+        {
+            "env": "Kyiv, Ukraine",
+            "agent": "city"
+        },
+        {
+            "env": "Cork, Ireland",
+            "agent": "city"
+        },
+        {
+            "env": "Limerick, Ireland",
+            "agent": "city"
+        },
+        {
+            "env": "Waterford, Ireland",
+            "agent": "city"
+        },
+        {
+            "env": "San Antonio, USA",
+            "agent": "city"
+        },
+        {
+            "env": "El Paso, USA",
+            "agent": "city"
+        }
+    ]
+}
