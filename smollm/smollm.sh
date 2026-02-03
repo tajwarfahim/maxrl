@@ -10,7 +10,7 @@ VAL_DATA=/path/to/gsm8k-platinum/test.parquet
 CHECKPOINT_DIR=/path/to/checkpoints
 
 # Training hyperparameters
-ADVANTAGE_ESTIMATOR=p_normalization
+ADVANTAGE_ESTIMATOR=maxrl
 
 # uncomment the following lines if you want to run GRPO or RLOO
 # ADVANTAGE_ESTIMATOR=grpo
@@ -31,6 +31,7 @@ ray status
 
 # ============ Training ============
 python3 -m verl.trainer.main_ppo \
+  ray_init.ray_dir=/tmp/ray \
   algorithm.adv_estimator=${ADVANTAGE_ESTIMATOR} \
   algorithm.use_kl_in_reward=False \
   algorithm.pass_k=${TRUNCATE_ORDER} \
@@ -44,8 +45,8 @@ python3 -m verl.trainer.main_ppo \
   actor_rollout_ref.model.path=${MODEL_PATH} \
   actor_rollout_ref.actor.optim.lr=${LR} \
   actor_rollout_ref.actor.use_kl_loss=False \
-  actor_rollout_ref.actor.ppo_mini_batch_size=256 \
-  actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=64 \
+actor_rollout_ref.actor.ppo_mini_batch_size=256 \
+actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=64 \
   actor_rollout_ref.rollout.name=vllm \
   actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu=64 \
   actor_rollout_ref.rollout.tensor_model_parallel_size=1 \
@@ -58,11 +59,8 @@ python3 -m verl.trainer.main_ppo \
   actor_rollout_ref.rollout.val_kwargs.top_p=0.95 \
   actor_rollout_ref.rollout.val_kwargs.top_k=-1 \
   algorithm.kl_ctrl.kl_coef=0.0 \
-  reward_model.reward_manager=multi_thread \
-  +reward_model.reward_kwargs.num_reward_actors=64 \
-  +reward_model.reward_kwargs.enable_majority_voting=true \
-  +reward_model.reward_kwargs.per_batch_timeout_s=5.0 \
-  +reward_model.reward_kwargs.per_item_timeout_s=1.0 \
+reward_model.reward_manager=multi_thread \
++reward_model.reward_kwargs.num_reward_actors=64 \
   trainer.project_name=${PROJECT_NAME} \
   trainer.experiment_name=${EXPERIMENT_NAME} \
   trainer.logger=['console','wandb'] \

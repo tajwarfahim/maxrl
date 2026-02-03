@@ -27,6 +27,7 @@ ray status
 
 # ============ Training ============
 python3 -m verl.trainer.main_ppo \
+  ray_init.ray_dir=/tmp/ray \
   algorithm.adv_estimator=${ADVANTAGE_ESTIMATOR} \
   algorithm.use_kl_in_reward=False \
   algorithm.pass_k=4 \

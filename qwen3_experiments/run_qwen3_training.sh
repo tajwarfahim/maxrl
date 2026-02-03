@@ -118,6 +118,9 @@ CLIP_RATIO_LOW=0.2
 CLIP_RATIO_HIGH=0.2
 GRAD_CLIP=0.3
 
+# KL coefficient (set to 0.0 since use_kl_loss=False)
+KL_COEFF=0.0
+
 echo "This is the per-GPU mini batch size: $PER_GPU_MINI_BATCH_SIZE"
 echo "This is the Maximum response length: $MAX_RESPONSE_LENGTH"
 
@@ -135,10 +138,10 @@ MODEL_NAME=Qwen/Qwen3-1.7B-Base
 # MODEL_PATH=Qwen/Qwen3-4B-Base
 # MODEL_NAME=Qwen/Qwen3-4B-Base
 
-ADVANTAGE_ESTIMATOR=p_normalization
+ADVANTAGE_ESTIMATOR=maxrl
 
 # Uncomment the following line if we want to run GRPO
-ADVANTAGE_ESTIMATOR=grpo
+# ADVANTAGE_ESTIMATOR=grpo
 
 PROJECT_NAME=Qwen3_MaxRL_Experiments
 EXPERIMENT_NAME=${ADVANTAGE_ESTIMATOR}_${MODEL_NAME}
@@ -230,4 +233,4 @@ python3 -W ignore -m verl.trainer.main_ppo \
     trainer.max_critic_ckpt_to_keep=400 \
     trainer.test_freq=50 \
     trainer.total_epochs=$TOTAL_EPOCHS \
-    ray_init.ray_dir="/tmp" $@
+    ray_init.ray_dir=/tmp/ray $@
