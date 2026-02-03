@@ -1,6 +1,6 @@
 # Maximum Likelihood Reinforcement Learning
 
-This is the official PyTorch implementation of our paper ["Maximum Likelihood Reinforcement Learning"](https://zanette-labs.github.io/MaxRL/) by [Fahim Tajwar*](https://tajwarfahim.github.io/), [Guanning Zeng*](https://scholar.google.com/citations?user=SU6ooAQAAAAJ), [Yueer Zhou](https://zhouyueer7.github.io/), [Yuda Song](https://yudasong.github.io/), [Daman Arora](https://daman1209arora.github.io/), [Yiding Jiang](https://yidingjiang.github.io/), [Jeff Schneider](https://www.cs.cmu.edu/~schneide/), [Ruslan Salakhutdinov](https://www.cs.cmu.edu/~rsalakhu/), [Haiwen Feng](https://havenfeng.github.io/), and [Andrea Zanette](https://azanette.com/). Please see the [project website](https://zanette-labs.github.io/MaxRL/) for more information about this work. For any questions/concerns related to the codebase, please reach out to [Fahim Tajwar](mailto:tajwarfahim932@gmail.com).
+This is the official PyTorch implementation of our paper ["Maximum Likelihood Reinforcement Learning"](https://zanette-labs.github.io/MaxRL/) by [Fahim Tajwar*](https://tajwarfahim.github.io/), [Guanning Zeng*](https://scholar.google.com/citations?user=SU6ooAQAAAAJ), [Yueer Zhou](https://zhouyueer7.github.io/), [Yuda Song](https://yudasong.github.io/), [Daman Arora](https://daman1209arora.github.io/), [Yiding Jiang](https://yidingjiang.github.io/), [Jeff Schneider](https://www.cs.cmu.edu/~schneide/), [Ruslan Salakhutdinov](https://www.cs.cmu.edu/~rsalakhu/), [Haiwen Feng](https://havenfeng.github.io/), and [Andrea Zanette](https://azanette.com/). Please see the [project website](https://zanette-labs.github.io/MaxRL/) for more information about this work. For any questions/concerns related to the codebase, please reach out to [Fahim Tajwar](mailto:tajwarfahim932@gmail.com) or [Guanning Zeng](mailto:zgn0303@gmail.com).
 
 ## Installation
 
@@ -8,10 +8,11 @@ In order for the installations to go smoothly, make sure you are operating from 
 
 Our installation mirrors that of setting up [verl](https://github.com/verl-project/verl). In particular, follow the steps below to ensure exact match with our environment setting.
 
-### Step 1: Create a fresh conda environment
+First, create a fresh conda environment
 
 ```
 conda create -n maxrl python==3.10
+conda activate maxrl
 ```
 
 Next, install pytorch and associated dependencies. In particular, we use the following version:
