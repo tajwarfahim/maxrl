@@ -132,11 +132,11 @@ TOTAL_EPOCHS=5
 
 # Set model path
 MODEL_PATH=Qwen/Qwen3-1.7B-Base
-MODEL_NAME=Qwen/Qwen3-1.7B-Base
+MODEL_NAME=Qwen3-1.7B-Base
 
 # Uncomment the following two lines if we want to run Qwen3-4B-Base
 # MODEL_PATH=Qwen/Qwen3-4B-Base
-# MODEL_NAME=Qwen/Qwen3-4B-Base
+# MODEL_NAME=Qwen3-4B-Base
 
 ADVANTAGE_ESTIMATOR=maxrl
 

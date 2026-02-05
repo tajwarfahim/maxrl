@@ -1,6 +1,21 @@
+<div align="center">
+
 # Maximum Likelihood Reinforcement Learning
 
-This is the official PyTorch implementation of our paper ["Maximum Likelihood Reinforcement Learning"](https://zanette-labs.github.io/MaxRL/) by [Fahim Tajwar*](https://tajwarfahim.github.io/), [Guanning Zeng*](https://scholar.google.com/citations?user=SU6ooAQAAAAJ), [Yueer Zhou](https://zhouyueer7.github.io/), [Yuda Song](https://yudasong.github.io/), [Daman Arora](https://daman1209arora.github.io/), [Yiding Jiang](https://yidingjiang.github.io/), [Jeff Schneider](https://www.cs.cmu.edu/~schneide/), [Ruslan Salakhutdinov](https://www.cs.cmu.edu/~rsalakhu/), [Haiwen Feng](https://havenfeng.github.io/), and [Andrea Zanette](https://azanette.com/). Please see the [project website](https://zanette-labs.github.io/MaxRL/) for more information about this work. For any questions/concerns related to the codebase, please reach out to [Fahim Tajwar](mailto:tajwarfahim932@gmail.com) or [Guanning Zeng](mailto:zgn0303@gmail.com).
+</div>
+
+This is the official PyTorch implementation of our paper "<strong>Maximum Likelihood Reinforcement Learning</strong>" by Fahim Tajwar*, Guanning Zeng*, Yueer Zhou, Yuda Song, Daman Arora, Yiding Jiang, Jeff Schneider, Ruslan Salakhutdinov, Haiwen Feng, and Andrea Zanette.
+
+<div align="center">
+<a href="https://zanette-labs.github.io/MaxRL/">
+    <img src="https://img.shields.io/badge/Website-%231e37ff?style=for-the-badge"></a>
+<a href="https://arxiv.org/abs/2602.02710">
+    <img src="https://img.shields.io/badge/Paper-%23FF2442?style=for-the-badge"></a>
+<a href="https://github.com/tajwarfahim/maxrl">
+    <img src="https://img.shields.io/badge/Code-%2300CC00?style=for-the-badge"></a>
+</div>
+
+For any questions related to the codebase, please reach out to [Fahim Tajwar](mailto:tajwarfahim932@gmail.com) or [Guanning Zeng](mailto:zgn0303@gmail.com).
 
 ## Installation
 
@@ -57,10 +72,9 @@ pip install -e .
 
 This should finish necessary installations. Note that it is possible that different packages may end up breaking since package versions keep changing, please your own judgement to fix them/reach out to us in case the above setup process leads to error. Thanks!
 
+## Reproducing our experiments
 
-# Reproducing our experiments
-
-## SmolLM on GSM8k
+### SmolLM on GSM8k
 
 1. Download and preprocess data, change the local path appropriately according to your machine.
 
@@ -72,7 +86,7 @@ python examples/maxrl_data_preprocess/gsm8k.py --local_dir /path/to/gsm8k
 
 3. `bash smollm/smollm.sh`
 
-## 17x17 Maze
+### 17x17 Maze
 
 1. Download preprocessed data
 
@@ -84,7 +98,7 @@ huggingface-cli download guanning-ai/maze_17x17_1m --repo-type dataset --local-d
 
 3. `bash maze/maze_17.sh`
 
-## ImageNet experiments
+### ImageNet experiments
 
 1. Install `hf-transfer` to be able to efficiently download the ImageNet-256x256 dataset.
 
@@ -99,7 +113,7 @@ pip install huggingface_hub
 bash imagenet/imagenet_training_script.sh
 ```
 
-## Qwen3-1.7B-Base and Qwen3-4B-Base experiments
+### Qwen3-1.7B-Base and Qwen3-4B-Base experiments
 
 1. Download and preprocess all the datasets. Change the local file paths depending on your machine.
 
@@ -125,3 +139,19 @@ Note that we use 4 nodes of 8xH200 GPUs for our training runs, please change the
 
 ## Acknowledgements
 The codebase for the algorithm is built on top of [verl](https://github.com/verl-project/verl), and we express our gratitude to the authors of verl for providing us with an easy-to-work-with codebase!
+
+## Citation
+
+If you find this repository useful for your research, please consider citing our paper:
+
+```
+@misc{tajwar2026maximumlikelihoodreinforcementlearning,
+      title={Maximum Likelihood Reinforcement Learning}, 
+      author={Fahim Tajwar and Guanning Zeng and Yueer Zhou and Yuda Song and Daman Arora and Yiding Jiang and Jeff Schneider and Ruslan Salakhutdinov and Haiwen Feng and Andrea Zanette},
+      year={2026},
+      eprint={2602.02710},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2602.02710}, 
+}
+```
