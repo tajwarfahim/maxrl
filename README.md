@@ -12,7 +12,9 @@ This is the official PyTorch implementation of our paper "<strong>Maximum Likeli
 <a href="https://arxiv.org/abs/2602.02710">
     <img src="https://img.shields.io/badge/Paper-%23FF2442?style=for-the-badge"></a>
 <a href="https://github.com/tajwarfahim/maxrl">
-    <img src="https://img.shields.io/badge/Code-%2300CC00?style=for-the-badge"></a>
+    <img src="https://img.shields.io/badge/Code-%2300B4D8?style=for-the-badge"></a>
+<a href="https://huggingface.co/collections/ftajwar/maxrl">
+    <img src="https://img.shields.io/badge/Weights-%236C5CE7?style=for-the-badge"></a>
 </div>
 
 For any questions related to the codebase, please reach out to [Fahim Tajwar](mailto:tajwarfahim932@gmail.com) or [Guanning Zeng](mailto:zgn0303@gmail.com).
