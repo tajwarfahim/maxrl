@@ -181,6 +181,8 @@ class MultiThreadNaiveRewardManager:
         per_batch_timeout_s: float = 10.0,
         poll_interval_s: float = 0.5,
         timeout_score: float = 0.0,
+        zero_reward_on_max_response_length: bool = False,
+        max_resp_len: Optional[int] = None,
     ):
         self.tokenizer = tokenizer
         self.num_examine = num_examine
@@ -191,6 +193,10 @@ class MultiThreadNaiveRewardManager:
         self._per_item_timeout_s = int(per_item_timeout_s)
         self._per_batch_timeout_s = float(per_batch_timeout_s)
         self._poll_interval_s = float(poll_interval_s)
+        if isinstance(zero_reward_on_max_response_length, str):
+            zero_reward_on_max_response_length = zero_reward_on_max_response_length.lower() in ("1", "true", "yes", "y")
+        self._zero_reward_on_max_response_length = bool(zero_reward_on_max_response_length)
+        self._max_resp_len = int(max_resp_len) if max_resp_len is not None else None
 
         if isinstance(num_reward_actors, int):
             self.num_reward_actors = num_reward_actors
@@ -458,6 +464,13 @@ class MultiThreadNaiveRewardManager:
         # postprocess + metrics
         for i, info in enumerate(items):
             out = results.get(i, {"score": self._timeout_score, "accuracy": 0.0})
+            is_max_response_length = info["valid_resp_len"].item() >= (self._max_resp_len or data.batch["responses"].shape[-1])
+            zeroed_by_max_response_length = self._zero_reward_on_max_response_length and is_max_response_length
+            if zeroed_by_max_response_length:
+                out = {"score": 0.0, "accuracy": 0.0}
+
+            if self._zero_reward_on_max_response_length:
+                reward_extra_info["zeroed_by_max_response_length"].append(float(zeroed_by_max_response_length))
             reward_tensor[i, info["valid_resp_len"] - 1] = float(out["score"])
 
             ds = info["data_source"]
@@ -481,9 +494,11 @@ class MultiThreadNaiveRewardManager:
             response_str = info["response"]
 
             # Extract prediction answer
-            pred_ans = self._extract_answer(response_str)
+            pred_ans = None if zeroed_by_max_response_length else self._extract_answer(response_str)
             if pred_ans is not None:
                 prompt_to_answers[ds][pk].append(self._normalize_answer(pred_ans))
+            elif zeroed_by_max_response_length:
+                prompt_to_answers[ds].setdefault(pk, [])
 
             # Extract & store GT answer once per prompt
             if pk not in prompt_to_gt_answer[ds]:
@@ -557,4 +572,3 @@ class MultiThreadNaiveRewardManager:
             }
 
         return reward_tensor
-

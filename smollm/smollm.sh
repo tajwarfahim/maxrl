@@ -20,6 +20,7 @@ TRUNCATE_ORDER=64
 LR=1e-5
 N_ROLLOUTS=128
 N_VAL=32
+MAX_RESPONSE_LENGTH=2048
 
 PROJECT_NAME=MaxRL_SmolLM-360M
 EXPERIMENT_NAME=${ADVANTAGE_ESTIMATOR}_${N_ROLLOUTS}rollouts
@@ -41,7 +42,7 @@ python3 -m verl.trainer.main_ppo \
   data.train_batch_size=256 \
   data.filter_overlong_prompts=True \
   data.max_prompt_length=512 \
-  data.max_response_length=2048 \
+  data.max_response_length=${MAX_RESPONSE_LENGTH} \
   actor_rollout_ref.model.path=${MODEL_PATH} \
   actor_rollout_ref.actor.optim.lr=${LR} \
   actor_rollout_ref.actor.use_kl_loss=False \
@@ -61,6 +62,8 @@ python3 -m verl.trainer.main_ppo \
   algorithm.kl_ctrl.kl_coef=0.0 \
   reward_model.reward_manager=multi_thread \
   +reward_model.reward_kwargs.num_reward_actors=64 \
+  +reward_model.reward_kwargs.zero_reward_on_max_response_length=True \
+  +reward_model.reward_kwargs.max_resp_len=${MAX_RESPONSE_LENGTH} \
   trainer.project_name=${PROJECT_NAME} \
   trainer.experiment_name=${EXPERIMENT_NAME} \
   trainer.logger=['console','wandb'] \
